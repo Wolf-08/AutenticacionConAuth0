@@ -10,7 +10,16 @@ import { DOCUMENT } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
+  logueado: boolean = false;
+
+  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {
+    this.auth.isAuthenticated$.subscribe( 
+      p => {
+        this.logueado = p
+        console.log(p)}
+        
+    )
+  }
 
   ngOnInit(): void {
   }
