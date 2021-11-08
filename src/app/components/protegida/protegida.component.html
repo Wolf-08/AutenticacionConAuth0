@@ -1,1 +1,8 @@
-<p>protegida works!</p>
+<h1> Perfil de Usuario </h1>
+<!-- Observable -->
+<ul *ngIf="auth.user$ | async as user">
+    <li>{{ user.name }}</li>
+    <li>{{ user.email }}</li>
+    <code> {{ user | json}} </code>
+
+</ul>
