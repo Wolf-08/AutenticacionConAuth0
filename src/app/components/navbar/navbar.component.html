@@ -15,9 +15,15 @@
                 <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link" [routerLink]="['precios']">Precios</a>
                 </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['login']">Login</a>
-                </li>
+
+                <span class=" navbar-text">
+                    <button *ngIf="!auth.loggedIn" class="btn btn-outline-primary"  >
+                        Ingresar
+                    </button>
+                    <button class="btn btn-outline-danger" *ngIf="auth.loggedIn" >
+                        Salir
+                    </button>
+                </span>
             </ul>
         </div>
     </div>
