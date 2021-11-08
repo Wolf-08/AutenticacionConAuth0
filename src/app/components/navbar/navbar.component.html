@@ -16,14 +16,16 @@
                     <a class="nav-link" [routerLink]="['precios']">Precios</a>
                 </li>
 
-                <span class=" navbar-text">
-                    <button *ngIf="!auth.loggedIn" class="btn btn-outline-primary"  >
-                        Ingresar
+                <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+                    <button (click)="auth.logout({ returnTo: document.location.origin })">
+                      Log out
                     </button>
-                    <button class="btn btn-outline-danger" *ngIf="auth.loggedIn" >
-                        Salir
-                    </button>
-                </span>
+                </ng-container>
+
+                <ng-template #loggedOut>
+                    <button (click)="auth.loginWithRedirect()">Log in</button>
+                </ng-template>
+                `
             </ul>
         </div>
     </div>
